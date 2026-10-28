@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Explore Chiba through Chiba-kun. Hover or tap to find a city.">
+  <title>Chiba-kun · 千葉</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="map.css">
+</head>
+<body>
+  <main aria-label="Interactive map of Chiba">
+    <svg id="map" role="group" aria-label="Chiba-kun over Chiba, surrounded by a faint dotted map of Japan. Hover, tap, or tab through cities." viewBox="0 0 1200 800">
+      <defs>
+        <pattern id="dots" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.12" fill="#d3d5d7"/></pattern>
+        <pattern id="chiba-dots" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.16" fill="#6c7074"/></pattern>
+      </defs>
+      <g id="world">
+        <g id="japan" fill="url(#dots)" fill-rule="evenodd" aria-hidden="true"></g>
+        <image id="character" href="chiba-kun.png" preserveAspectRatio="xMidYMid meet" aria-label="千葉県マスコットキャラクター チーバくん"/>
+        <path id="chiba" fill="url(#chiba-dots)" fill-opacity=".58" fill-rule="evenodd" aria-hidden="true"/>
+        <g id="cities" role="group" aria-label="Cities in Chiba"></g>
+      </g>
+      <g id="label" pointer-events="none" opacity="0" aria-hidden="true">
+        <circle id="pin-halo" r="7" fill="white" fill-opacity=".25"/>
+        <circle r="2.8" fill="white" stroke="#a6001d" stroke-width="1.1"/>
+        <text id="city-jp" x="13" y="-10" lang="ja"></text>
+        <text id="city-en" x="13" y="10"></text>
+      </g>
+    </svg>
+    <p id="hint">Hover over Chiba-kun <span aria-hidden="true">·</span> ホバーで地名</p>
+    <p id="announcement" class="sr-only" role="status" aria-live="polite"></p>
+    <p id="error" hidden>The map could not load. Please reload the page.</p>
+    <div class="alignment-control"><label for="alignment">Map</label><input id="alignment" type="range" min="0" max="100" value="80" aria-label="Chiba-kun opacity: slide toward Map to reveal Chiba’s geography"><label for="alignment">Chiba-kun</label></div>
+    <nav class="map-controls" aria-label="Map controls">
+      <button id="zoom-in" aria-label="Zoom in" title="Zoom in">+</button>
+      <button id="zoom-out" aria-label="Zoom out" title="Zoom out">−</button>
+      <button id="reset" aria-label="Return to Chiba" title="Return to Chiba"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 3H3v3m11-3h3v3M3 14v3h3m11-3v3h-3"/></svg></button>
+    </nav>
+  </main>
+  <script src="japan.js"></script>
+  <script src="map.js"></script>
+</body>
+</html>
